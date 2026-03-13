@@ -2,20 +2,15 @@ namespace SpriteKind {
     export const Npc = SpriteKind.create()
     export const Map = SpriteKind.create()
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile8`, function (sprite4, location3) {
+    game.gameOver(false)
+})
 scene.onHitWall(SpriteKind.Player, function (sprite, location) {
-    if (tiles.tileAtLocationEquals(location, assets.tile`myTile5`) && mySprite.tileKindAt(TileDirection.Top, assets.tile`myTile5`) || tiles.tileAtLocationEquals(location, assets.tile`myTile0`) && mySprite.tileKindAt(TileDirection.Bottom, assets.tile`myTile0`)) {
+    if (tiles.tileAtLocationEquals(location, assets.tile`myTile3`) && mySprite.tileKindAt(TileDirection.Top, assets.tile`myTile3`) || tiles.tileAtLocationEquals(location, assets.tile`myTile0`) && mySprite.tileKindAt(TileDirection.Bottom, assets.tile`myTile0`)) {
         tiles.setTileAt(location, assets.tile`myTile`)
         info.changeScoreBy(1)
         scene.cameraShake(4, 500)
     }
-})
-controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite.vy = -200
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`transparency16`, function (sprite3, location2) {
-    Lvl2 += 1
-    blockSettings.writeNumber("Mny", info.score())
-    RestartLevel(Lvl2)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite6, otherSprite2) {
     sprites.destroy(otherSprite2)
@@ -39,8 +34,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite6, otherSp
         . . . . . . . . . . . . . . . . 
         `)
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`transparency16`, function (sprite4, location3) {
-    game.gameOver(false)
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite.vy = -200
 })
 info.onScore(15, function () {
     achievements.create("You gained 15 coins!", 2, "Lots of money!", img`
@@ -111,205 +106,91 @@ info.onScore(10, function () {
         `)
 })
 info.onScore(37, function () {
-    if (!(achievements.isShowing())) {
-        achievements.create("You gained 37 coins!", 2, "Did you miss one?", img`
-            ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-            .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-            b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-            b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-            c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-            cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-            .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-            ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-            ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-            .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-            b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-            b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-            c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-            cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-            .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-            ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-            ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-            .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-            b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-            b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-            c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-            cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-            .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-            ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-            ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-            .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-            b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-            b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-            c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-            cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-            .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-            ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-            ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-            .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-            b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-            b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-            c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-            cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-            .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-            ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-            ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-            .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-            b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-            b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-            c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-            cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-            .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-            ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-            ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-            .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-            b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-            b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-            c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-            cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-            .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-            ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-            ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-            .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-            b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-            b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-            c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-            cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-            .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-            ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-            `)
-    }
+    achievements.create("You gained 37 coins!", 2, "Did you miss one?", img`
+        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
+        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
+        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
+        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
+        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
+        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
+        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
+        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
+        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
+        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
+        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
+        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
+        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
+        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
+        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
+        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
+        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
+        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
+        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
+        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
+        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
+        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
+        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
+        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
+        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
+        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
+        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
+        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
+        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
+        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
+        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
+        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
+        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
+        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
+        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
+        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
+        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
+        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
+        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
+        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
+        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
+        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
+        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
+        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
+        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
+        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
+        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
+        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
+        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
+        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
+        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
+        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
+        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
+        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
+        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
+        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
+        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
+        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
+        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
+        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
+        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
+        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
+        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
+        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
+        `)
 })
 info.onScore(38, function () {
     achievements.create("You gained 38 coins!", 2, "Wow! You got them all!", img`
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
-        ..bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb....bbbb..
-        .b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b..b5555b.
-        b5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5bb5d33d5b
-        b535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515bb535515b
-        c53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dcc53551dc
-        cdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddccdd11ddc
-        .fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf..fddddf.
-        ..ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff....ffff..
+        . . . . . b b b b b b b b . . . 
+        . . . . . b b b b b b b b . . . 
+        . . . . . b b b b b b b b . . . 
+        . . . b b 5 5 5 5 5 5 5 5 b b . 
+        . . . b b 5 5 5 5 5 5 5 5 b b . 
+        b b b 5 5 d d 3 3 3 3 d d 5 5 b 
+        b b b 5 5 d d 3 3 3 3 d d 5 5 b 
+        b b b 5 5 3 3 5 5 5 5 1 1 5 5 b 
+        b b b 5 5 3 3 5 5 5 5 1 1 5 5 b 
+        c c c 5 5 3 3 5 5 5 5 1 1 d d c 
+        c c c 5 5 3 3 5 5 5 5 1 1 d d c 
+        c c c d d d d 1 1 1 1 d d d d c 
+        c c c d d d d 1 1 1 1 d d d d c 
+        . . . f f d d d d d d d d f f . 
+        . . . f f d d d d d d d d f f . 
+        . . . . . f f f f f f f f . . . 
         `)
 })
 info.onScore(1, function () {
@@ -323,6 +204,10 @@ info.onScore(1, function () {
         . f d d d d f . 
         . . f f f f . . 
         `)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite5, location4) {
+    pause(500)
+    tiles.setTileAt(location4, assets.tile`myTile7`)
 })
 function RestartLevel (Lvl: number) {
     sprites.destroy(Npc2)
@@ -598,7 +483,6 @@ function RestartLevel (Lvl: number) {
         tiles.placeOnRandomTile(Mmmmm, assets.tile`myTile8`)
         tiles.setTileAt(Mmmmm.tilemapLocation(), sprites.skillmap.islandTile7)
         Mmmmm.z = -1
-        blockSettings.writeNumber("Nwlv", 2)
     } else if (Lvl == 3) {
         sprites.destroy(Mmmmm)
         scene.setBackgroundImage(img`
@@ -726,22 +610,16 @@ function RestartLevel (Lvl: number) {
         scene.setBackgroundColor(7)
         tiles.setCurrentTilemap(tilemap`level4`)
         mySprite.setScale(1, ScaleAnchor.Middle)
-        blockSettings.writeNumber("Nwlv", 3)
     } else {
-        blockSettings.clear()
         game.gameOver(true)
     }
     Npc2 = sprites.create(People._pickRandom(), SpriteKind.Npc)
     Npc2.z = -1
     tiles.placeOnRandomTile(Npc2, assets.tile`myTile1`)
-    tiles.placeOnRandomTile(mySprite, assets.tile`myTile6`)
+    tiles.placeOnRandomTile(Mmmmm, assets.tile`myTile6`)
+    tiles.placeOnRandomTile(mySprite, assets.tile`myTile4`)
 }
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite5, location4) {
-    pause(500)
-    tiles.setTileAt(location4, assets.tile`transparency16`)
-})
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
-    blockSettings.clear()
     game.reset()
 })
 info.onScore(5, function () {
@@ -764,6 +642,10 @@ info.onScore(5, function () {
         . . f f f f . . . . f f f f . . 
         `)
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite3, location2) {
+    Lvl2 += 1
+    RestartLevel(Lvl2)
+})
 let myMinimap: minimap.Minimap = null
 let mySprite2: Sprite = null
 let Mmmmm: Sprite = null
@@ -772,7 +654,6 @@ let mySprite: Sprite = null
 let Lvl2 = 0
 let text_list: string[] = []
 let People: Image[] = []
-blockSettings.clear()
 game.splash("Boom")
 game.splash("A Coleonsole Original")
 People = [
@@ -1047,9 +928,6 @@ mySprite,
 500,
 characterAnimations.rule(Predicate.FacingRight)
 )
-if (blockSettings.exists("Nwlv")) {
-    Lvl2 = blockSettings.readNumber("Nwlv")
-}
 RestartLevel(Lvl2)
 game.onUpdateInterval(1, function () {
     sprites.destroy(mySprite2)
