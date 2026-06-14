@@ -205,10 +205,6 @@ info.onScore(1, function () {
         . . f f f f . . 
         `)
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite5, location4) {
-    pause(500)
-    tiles.setTileAt(location4, assets.tile`myTile7`)
-})
 function RestartLevel (Lvl: number) {
     sprites.destroy(Npc2)
     if (Lvl == 1) {
